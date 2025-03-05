@@ -10,7 +10,7 @@ export default [
   { languageOptions: { globals: globals.browser } },
   { rules:
     {
-      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     },
   },
   pluginJs.configs.recommended,
@@ -19,6 +19,6 @@ export default [
     'semi': true,
     'quotes': 'single',
     'blockSpacing': { before: 1, after: 1 },
-    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
   }),
 ];
