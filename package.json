@@ -1,0 +1,38 @@
+{
+  "name": "jh_weather_app_assessment",
+  "version": "0.1.0",
+  "description": "A small proxy api for OpenWeatherMap meant as an assessment of node and express experience.",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "lint": "eslint . --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamescrosslin/jh_weather_app_assessment.git"
+  },
+  "author": "James Crosslin",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jamescrosslin/jh_weather_app_assessment/issues"
+  },
+  "homepage": "https://github.com/jamescrosslin/jh_weather_app_assessment#readme",
+  "engines": {
+    "node": "22.14.0",
+    "npm": "10.9.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "express": "^4.21.2",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@stylistic/eslint-plugin": "^4.1.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
+    "typescript-eslint": "^8.25.0"
+  }
+}
