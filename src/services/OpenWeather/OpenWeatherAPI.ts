@@ -1,5 +1,5 @@
 import axios, { AxiosPromise } from 'axios';
-import { OneCallResponse, OptionalOneCallField } from './types';
+import { OneCallResponse } from './OpenWeatherTypes';
 
 export class OpenWeatherAPI {
   constructor(apiKey: string) {
@@ -10,7 +10,8 @@ export class OpenWeatherAPI {
   private baseURL = 'https://api.openweathermap.org/data/3.0/onecall';
 
   async getWeatherByCoordinates(
-    { latitude, longitude, exclude }: { latitude: string; longitude: string; exclude?: OptionalOneCallField[] },
+    { latitude, longitude, exclude }:
+    { latitude: string; longitude: string; exclude?: string },
   ): AxiosPromise<OneCallResponse> {
     const searchParams = new URLSearchParams({
       appid: this.apiKey,
@@ -19,7 +20,7 @@ export class OpenWeatherAPI {
     });
 
     if (exclude) {
-      searchParams.append('exclude', exclude.join(','));
+      searchParams.append('exclude', exclude);
     }
 
     const url = `${this.baseURL}?${searchParams.toString()}`;
