@@ -5,6 +5,7 @@ import { loadVariableFromEnv } from './utils/loadVariableFromEnv';
 import { normalizeWeatherRequest } from './middleware/normalizeWeatherRequest';
 import { CustomError } from './CustomError';
 import { hasOpenWeatherInstantiated } from './middleware/hasOpenWeatherInstantiated';
+import { asyncHandler } from './utils/asyncHandler';
 
 const app: Application = express();
 const port = 3000;
@@ -14,7 +15,7 @@ app.locals.openWeather = new OpenWeatherAPI(loadVariableFromEnv('OPEN_WEATHER_AP
 app.get('/weather',
   hasOpenWeatherInstantiated,
   normalizeWeatherRequest,
-  async (req: Request, res: Response) => {
+  asyncHandler(async (req: Request, res: Response) => {
     const { latitude, longitude, exclude } = req.app.locals.normalizedWeatherRequests;
 
     const inputs = {
@@ -26,7 +27,8 @@ app.get('/weather',
     const weather = await app.locals.openWeather.getWeatherByCoordinates(inputs);
 
     res.status(200).json(weather);
-  });
+  }),
+);
 
 app.use(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
