@@ -1,6 +1,6 @@
 {
   "name": "jh_weather_app_assessment",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A small proxy api for OpenWeatherMap meant as an assessment of node and express experience.",
   "main": "src/app.ts",
   "type": "module",
