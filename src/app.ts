@@ -10,7 +10,9 @@ import { asyncHandler } from './utils/asyncHandler';
 const app: Application = express();
 const port = 3000;
 
-app.locals.openWeather = new OpenWeatherAPI(loadVariableFromEnv('OPEN_WEATHER_API_KEY'));
+const openWeatherApiKey = await loadVariableFromEnv('OPEN_WEATHER_API_KEY');
+
+app.locals.openWeather = new OpenWeatherAPI(openWeatherApiKey);
 
 app.get('/weather',
   hasOpenWeatherInstantiated,

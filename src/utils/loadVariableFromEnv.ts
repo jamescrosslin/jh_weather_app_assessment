@@ -1,3 +1,3 @@
-export const loadVariableFromEnv = function (variableName: string): string {
-  return process.env[variableName];
+export const loadVariableFromEnv = async function (variableName: string): Promise<string> {
+  return await process.env[variableName];
 };
