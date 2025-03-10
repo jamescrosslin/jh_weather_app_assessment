@@ -14,6 +14,14 @@ const openWeatherApiKey = await loadVariableFromEnv('OPEN_WEATHER_API_KEY');
 
 app.locals.openWeather = new OpenWeatherAPI(openWeatherApiKey);
 
+app.get('/',
+  (req, res) => {
+    res.status(200).send({
+      message: 'Welcome to the Weather API',
+    });
+  },
+);
+
 app.get('/weather',
   hasOpenWeatherInstantiated,
   normalizeWeatherRequest,
@@ -28,7 +36,7 @@ app.get('/weather',
 
     const weather = await app.locals.openWeather.getWeatherByCoordinates(inputs);
 
-    res.status(200).json(weather);
+    res.status(200).json(weather.data);
   }),
 );
 
